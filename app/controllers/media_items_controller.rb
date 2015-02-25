@@ -23,7 +23,7 @@ class MediaItemsController < ApplicationController
 
   def show
     @url = URI.extract(@media_item.description)
-    @object = LinkThumbnailer.generate("http://stackoverflow.com") 
+    @object = LinkThumbnailer.generate(@url.first) 
   end
 
   def edit

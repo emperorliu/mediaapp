@@ -1,9 +1,10 @@
 %div.jumbotron
   %h2
     Update this media item
+%div.container
   = bootstrap_form_for(@media_item) do |f|
     .row
-      .col-sm-4
+      .col-lg-5
         = f.select :medium,[["N/A"], ["Youtube"], ["Image"], ["Website link"], ["Other"]], label: "Type"
         = f.text_field :title, label: "Title"
         = f.text_area :description, label: "What is it? (add link if possible)", rows: 5, class: "col-sm-3 form-group"
