@@ -17,6 +17,8 @@ gem 'fabrication'
 gem 'faker'
 gem 'turbolinks'
 gem 'figaro'
+gem 'rinku'
+gem 'link_thumbnailer'
 
 group :development do
   gem 'thin'

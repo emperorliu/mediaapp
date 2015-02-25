@@ -1,0 +1,51 @@
+%div.jumbotron
+  %h2
+    Hello '
+    = current_user.username
+    ' Welcome to your media collection!
+
+%div.container
+  %h3
+    = link_to "Add a media item", new_media_item_path
+    ||
+    = link_to "Logout", logout_path
+
+  %hr
+
+  - if current_user
+    = form_tag search_media_items_path, :method => "get", style: "float: center;", class: "col-lg-1 col-offset-6 centered navbar-form" do
+      = text_field_tag :search_term, nil, placeholder: "Search by title", class: "form-control"
+      = submit_tag("Search", class: "btn btn-default")
+  %br 
+
+  - @media_items.each do |media_item|
+    %div.quote-container
+      %i.pin
+      %blockquote.note.yellow
+        %br
+        %h4
+          [
+          = media_item.title
+          ]
+        %h5
+          Type:
+        = media_item.medium
+        %br
+        %h5
+          Description:
+        = Rinku.auto_link(media_item.description) { |url| "#{media_item.medium} Link" }.html_safe
+        %cite.author 
+          - if current_user == media_item.user
+            = link_to media_item_path(media_item) do
+              %span.glyphicon.glyphicon-circle-arrow-right
+            = link_to media_item_path(media_item), method: 'delete' do
+              %span.glyphicon.glyphicon-remove
+%br
+%br
+%br
+
+#footer
+  .container
+    %p
+      Created by
+      = link_to "Jeff Liu.", "http://i.ytimg.com/vi/GchUiYAmlLM/maxresdefault.jpg", :target => "_blank"

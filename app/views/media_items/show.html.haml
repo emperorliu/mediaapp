@@ -1,0 +1,26 @@
+%div.jumbotron
+  %h2
+    = @media_item.title
+
+%div.container
+  %h3
+    Type of Media:
+    = @media_item.medium
+    %br
+    %br
+    = image_tag "#{@object.images.first.src}", width: '200'
+    %br
+    %br
+    Description:
+    = Rinku.auto_link(@media_item.description) { |url| "#{@media_item.medium} Link" }.html_safe
+    %br
+    %br
+    %hr
+    = link_to "Edit Item", edit_media_item_path
+    %hr
+    = link_to "Share Item", "#"
+    %hr
+  %span.arrow
+    %a{:href => "javascript:javascript:history.go(-1)"} < Go Back
+    %br
+    %br

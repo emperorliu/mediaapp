@@ -1,0 +1,20 @@
+%div.jumbotron
+  %h2
+    Search results
+%div.container
+  %h3
+    - @results.each do |item|
+      %div.quote-container
+        %i.pin
+        %blockquote.note.yellow
+          [
+          = item.title
+          ]
+          %br
+          = Rinku.auto_link(item.description) { |url| "#{item.medium} Link" }.html_safe
+    %br
+    %br
+    %span.arrow
+      %a{:href => "javascript:javascript:history.go(-1)"} < Go Back
+      %br
+      %br
