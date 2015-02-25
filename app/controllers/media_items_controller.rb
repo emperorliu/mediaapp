@@ -23,7 +23,12 @@ class MediaItemsController < ApplicationController
 
   def show
     @url = URI.extract(@media_item.description)
-    @object = LinkThumbnailer.generate(@url.first) 
+    if @media_item.medium == "Youtube" || @media_item.medium == "Website"
+      @object = LinkThumbnailer.generate(@url.first)
+      @object = @object.images.first.src
+    else
+      @object = @url.first
+    end
   end
 
   def edit
